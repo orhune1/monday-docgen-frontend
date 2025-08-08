@@ -23,15 +23,30 @@ function App() {
     });
   }, []);
 
-  const handleGenerate = async () => {
-    const response = await fetch("https://orhunsandbox.erdemorhun4.replit.app/generate-doc", {
+const handleGenerate = async () => {
+  console.log("Generate button clicked"); // Add this
+
+  try {
+    const response = await fetch("https://orhunsandbox.erdemorhun4.repl.co/generate-doc", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({ columnValues: itemData.column_values })
     });
 
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
     const result = await response.json();
-    alert(result.preview);
+    console.log("Document created:", result);
+    alert("Document created: " + result.preview);
+  } catch (error) {
+    console.error("Error generating document:", error);
+    alert("Failed to generate document. Check the console for errors.");
+  }
+};
   };
 
   return (

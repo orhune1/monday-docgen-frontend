@@ -52,7 +52,8 @@ function App() {
   );
   <button
   onClick={async () => {
-    const response = await fetch("https://YOUR_REPLIT_BACKEND_URL/generate-doc", {
+    const response = await fetch("fetch("https://orhunsandbox--erdemorhun4.repl.co/generate-doc", {...})
+", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ columnValues: itemData.column_values })
